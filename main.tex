@@ -1,0 +1,132 @@
+\documentclass[a4paper,12pt,oneside]{report}
+
+% METADATEN
+\newcommand{\TITLE}{<Der ultimative Arbeitstitel dieses Meisterwerkes>}
+\newcommand{\AUTHOR}{<Vorname Nachname>}
+\newcommand{\DATE}{\today}
+\title{\TITLE}
+\author{\AUTHOR}
+\date{\DATE}
+
+% SPRACHE
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel} % Support für die deutsche Sprache
+\usepackage{hyphenat} % Worttrennung
+
+% LAYOUT
+\usepackage{geometry}
+\geometry{
+    left=3cm,
+    right=2cm,
+    top=1cm,
+    bottom=1cm,
+    includeheadfoot,
+    headheight=1cm,
+    headsep=1cm,
+    footskip=1cm,
+}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancypagestyle{fancy}{ % Header/Footer Style für den Hauptteil
+    \fancyhf{}
+    \fancyhf[HC]{\nouppercase{\leftmark}} % Header, Center -> aktuellen Kapitelnamen
+    \fancyhf[FC]{\thepage} % Footer, Center -> Seitenzahl
+    \renewcommand{\headrulewidth}{1pt} % Headerlinie
+}
+\fancypagestyle{plain}{} % Überschreibe plain mit fancy, da erste Seite eines Chapters immer plain annimmt
+\fancypagestyle{frontmatter}{
+    \fancyhf{}
+    \fancyhf[FC]{\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+}
+\fancypagestyle{backmatter}{
+    \fancyhf{}
+    \fancyhf[FC]{\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+}
+\usepackage{titlesec}
+\titleformat{\chapter}{\huge\normalfont\bfseries}{\thechapter}{1em}{} % Kapitel-Präfix
+\titlespacing{\chapter}{0em}{0em}{1em} % Kapitelnamen Spacing
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter\ #1}{}} % Kapitelnamen im Header
+
+% TEXT
+\usepackage[sfdefault]{roboto}
+\usepackage{parskip} % Absatzabstand
+\usepackage{setspace} % Zeilenabstand
+\onehalfspacing % Zeilenabstand
+
+\usepackage[normalem]{ulem} % Underlining
+\usepackage{hyperref} % Links und PDF-Einstellungen
+\hypersetup{
+    hidelinks,
+    hypertexnames=false,
+    plainpages=false,
+    bookmarksopen=true,
+    bookmarksnumbered=true,
+    pdfview=FitH,
+    pdfstartview=FitH,
+    pdftitle={\TITLE},
+    pdfauthor={\AUTHOR}
+}
+
+% BILDER
+\usepackage{graphicx}
+\usepackage[export]{adjustbox} % Grafikoptionen
+\usepackage{caption}
+
+% LISTINGS
+\usepackage{listings}
+
+% ABKÜRZUNGSVERZEICHNIS
+\usepackage[acronym, toc, automake]{glossaries}
+\makeglossaries
+\loadglsentries[acronym]{acronyms}
+
+% LITERATUR
+\usepackage[style=alphabetic]{biblatex}
+\addbibresource{literature.bib}
+\usepackage{csquotes} % Anführungszeichen bei Zitaten
+
+% ANHANG
+\usepackage[page,toc,titletoc]{appendix}
+\renewcommand{\appendixpagename}{Anhang}
+\renewcommand{\appendixtocname}{Anhang}
+
+% SONSTIGES
+\usepackage{lipsum} % Fülltext, bei Nutzung des Templates entfernen
+
+%%%%%%%%%% BEGINN DES DOKUMENTS %%%%%%%%%%
+
+\begin{document}
+
+\pagestyle{frontmatter}
+\pagenumbering{Roman}
+
+\input{decorative/Titelseite.tex}
+
+\setcounter{page}{2}
+
+\input{formalities/Abstract.tex}
+\input{formalities/Inhaltsverzeichnis.tex}
+\input{formalities/Abbildungsverzeichnis.tex}
+\input{formalities/Tabellenverzeichnis.tex}
+\input{formalities/Listingverzeichnis.tex}
+\input{formalities/Abkuerzungsverzeichnis.tex}
+
+\newpage
+\pagestyle{fancy}
+\pagenumbering{arabic}
+
+\input{chapters/01_Einleitung.tex}
+\input{chapters/02_NutzungDesTemplates.tex}
+\input{chapters/03_Schlussbetrachtung.tex}
+
+\newpage
+\pagestyle{backmatter}
+
+\input{formalities/Literaturverzeichnis.tex}
+\input{formalities/Anhang.tex}
+\input{formalities/Erklaerung.tex}
+
+\end{document}

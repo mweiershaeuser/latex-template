@@ -1,0 +1,78 @@
+\chapter{Nutzung des Templates}\label{kap_muster}
+
+Die folgenden Inhalte demonstrieren die Nutzung dieses Latex-Templates.
+
+\section{Unterkapitel 1}\label{kap_unterkapitel1}
+
+Hier entsteht ein erstes Unterkapitel.
+
+Im Text können Grafiken verwendet und bei Bedarf beschriftet werden.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.6\linewidth]{decorative/University_Logo.png}
+\caption{Wunderschöne Darstellung, Quelle: \cite{THKoeln2024}}
+\label{fig_my-beautiful-image}
+\end{figure}
+
+Manche Daten lassen sich besser in einer Tabelle darstellen.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c c c|} 
+\hline
+Jahreszeit & Erdbeeren & Maronen \\
+\hline
+Sommer & super lecker & lecker \\ 
+Herbst & lecker & super lecker \\
+\hline
+\end{tabular}
+\caption{Tabelle mit Lebensmittelratschlägen}
+\label{tab_food}
+\end{table}
+
+Wenn nötig können zudem Code-Ausschnitte eingebunden werden.
+
+\begin{lstlisting}[breaklines, captionpos=b, caption={Mein wunderschöner Code}, label={lst_listing1}]
+export const myUsefulConstant = "I'm no use at all!";
+\end{lstlisting}
+
+Vorab definierte Abkürzungen können per Hand zum Abkürzungsverzeichnis hinzugefügt werden und sind im Text nicht sichtbar.
+
+\glsadd{exmp1}
+
+In der Regel werden sie jedoch im Text verwendet und dadurch automatisch zum Verzeichnis hinzugefügt.
+Sie können dabei unterschiedliche Formen annehmen.
+
+Voll: \acrfull{exmp2}
+
+Lang: \acrlong{exmp2}
+
+Kurz: \acrshort{exmp2}
+
+Quellenangabe erfolgen durch Referenz auf einen Eintrag in der Bibliographie.
+
+\cite{Wright2010}
+    
+Für wörtliche Zitate sind Anführungszeichen zu setzen.
+
+\textquote{Once upon a time...}
+
+Elemente, die über ein Label verfügen, können referenziert werden. Dazu zählen z. B.
+
+das Kapitel \ref{kap_muster},
+
+die Abbildung \ref{fig_my-beautiful-image},
+
+die Tabelle \ref{tab_food}
+
+und das Listing \ref{lst_listing1}
+
+\section{Unterkapitel 2} \label{kap_unterkapitel2}
+\lipsum[1-5]
+
+\subsection{Unterunterkapitel} \label{kap_unterunterkapitel}
+\lipsum[1-5]
+
+\subsubsection{Unterunterunterkapitel} \label{kap_unterunterunterkapitel}
+\lipsum[1-5]
