@@ -57,9 +57,11 @@
 \onehalfspacing % Zeilenabstand
 
 \usepackage[normalem]{ulem} % Underlining
+\usepackage{xurl} % Zeilenumbrüche in Links
 \usepackage{hyperref} % Links und PDF-Einstellungen
 \hypersetup{
     hidelinks,
+    breaklinks=true,
     hypertexnames=false,
     plainpages=false,
     bookmarksopen=true,
@@ -87,6 +89,8 @@
 \usepackage[style=alphabetic]{biblatex}
 \addbibresource{literature.bib}
 \usepackage{csquotes} % Anführungszeichen bei Zitaten
+\setcounter{biburllcpenalty}{9000} % Zeilenumbrüche in Links nach Lower Case Buchstaben
+\setcounter{biburlucpenalty}{9000} % Zeilenumbrüche in Links nach Upper Case Buchstaben
 
 % ANHANG
 \usepackage[page,toc,titletoc]{appendix}
